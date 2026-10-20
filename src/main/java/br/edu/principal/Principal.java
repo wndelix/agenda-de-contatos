@@ -9,6 +9,7 @@ public class Principal {
 		List<String> nomesContatos = new ArrayList<>();
 		List<String> numerosContatos = new ArrayList<>();
 		List<String> emailsContatos = new ArrayList<>();
+		Persistencia.carregarContatos(nomesContatos, numerosContatos, emailsContatos);
 		
 		Scanner userInput = new Scanner(System.in);
 		boolean userContinue = true;
@@ -29,6 +30,7 @@ public class Principal {
 				case 5  -> Agenda.excluirContato(userInput, nomesContatos, numerosContatos, emailsContatos);
 				case 6  -> Utils.sobre();
 				case 7  -> {
+					Persistencia.salvarContatos(nomesContatos, numerosContatos, emailsContatos);
 					System.out.println("Saindo...");
 					userContinue = false;
 				}
