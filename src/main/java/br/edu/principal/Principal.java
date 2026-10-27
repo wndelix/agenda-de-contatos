@@ -5,37 +5,35 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Principal {
-	public static void main(String[] args) {
-		List<String> nomesContatos = new ArrayList<>();
-		List<String> numerosContatos = new ArrayList<>();
-		List<String> emailsContatos = new ArrayList<>();
-		Persistencia.carregarContatos(nomesContatos, numerosContatos, emailsContatos);
-		
-		Scanner userInput = new Scanner(System.in);
-		boolean userContinue = true;
-		int opcao;
-		
-		Utils.mostrarIntro();
+    public static void main(String[] args) {
+        List<Contato> contatos = new ArrayList<>();
+        Persistencia.carregarContatos(contatos);
 
-		while(userContinue) {
-			Utils.mostrarMenu();
-			opcao = Utils.selecionarOpcao(userInput);
+        Scanner sc = new Scanner(System.in);
+        boolean userContinue = true;
+        int opcao;
 
-			switch(opcao) {
-				default -> System.out.println("Opção Inválida. Tente Novamente.");
-				case 1  -> Agenda.adicionaContato(userInput, nomesContatos, numerosContatos, emailsContatos);
-				case 2  -> Agenda.listarContato(nomesContatos, numerosContatos, emailsContatos);
-				case 3  -> Agenda.procurarContato(userInput, nomesContatos, numerosContatos, emailsContatos);
-				case 4  -> Agenda.alterarContato(userInput, nomesContatos, numerosContatos, emailsContatos);
-				case 5  -> Agenda.excluirContato(userInput, nomesContatos, numerosContatos, emailsContatos);
-				case 6  -> Utils.sobre();
-				case 7  -> {
-					Persistencia.salvarContatos(nomesContatos, numerosContatos, emailsContatos);
-					System.out.println("Saindo...");
-					userContinue = false;
-				}
-			}
-		}
-		userInput.close();
-	}
+        Utils.mostrarIntro();
+
+        while (userContinue) {
+            Utils.mostrarMenu();
+            opcao = Utils.selecionarOpcao(sc);
+
+            switch (opcao) {
+                default -> System.out.println("Opção Inválida. Tente Novamente.");
+                case 1  -> Agenda.adicionaContato(sc, contatos);
+                case 2  -> Agenda.listarContato(contatos);
+                case 3  -> Agenda.procurarContato(sc, contatos);
+                case 4  -> Agenda.alterarContato(sc, contatos);
+                case 5  -> Agenda.excluirContato(sc, contatos);
+                case 6  -> Utils.sobre();
+                case 7  -> {
+                    Persistencia.salvarContatos(contatos);
+                    System.out.println("Saindo...");
+                    userContinue = false;
+                }
+            }
+        }
+        sc.close();
+    }
 }
