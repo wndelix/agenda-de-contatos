@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.edu.principal</groupId>
-    <artifactId>agenda_contatos</artifactId>
+    <artifactId>agenda-de-contatos</artifactId>
     <version>3.0.0</version>
 
     <properties>
