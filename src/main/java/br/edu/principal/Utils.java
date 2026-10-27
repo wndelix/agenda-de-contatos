@@ -7,7 +7,7 @@ public class Utils {
     public static void mostrarIntro() {
         System.out.println("╔══════════════════════════════════════╗");
         System.out.println("║          AGENDA DE CONTATOS          ║");
-        System.out.println("║                v1.1.0                ║");
+        System.out.println("║                v3.0.0                ║");
         System.out.println("╠══════════════════════════════════════╣");
         System.out.println("║              Bem-vindo!              ║");
         System.out.println("╚══════════════════════════════════════╝");
